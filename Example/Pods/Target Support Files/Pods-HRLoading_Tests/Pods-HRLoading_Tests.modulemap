@@ -1,0 +1,6 @@
+framework module Pods_HRLoading_Tests {
+  umbrella header "Pods-HRLoading_Tests-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -7,12 +7,23 @@
 //
 
 import UIKit
+import HRLoading
 
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
+//        self.startHRMaskLoading()
+//        self.startHRLoading()
+        
+//        HRLoading.startHRLoading()
+        HRLoading.startHRMaskLoading()
+    
     }
 
     override func didReceiveMemoryWarning() {
@@ -20,5 +31,8 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    @IBAction func xxx(_ sender: Any) {
+        print("xxxx")
+    }
 }
 
