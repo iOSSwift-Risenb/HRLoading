@@ -102,10 +102,12 @@ strip_invalid_archs() {
 
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
+  install_framework "${BUILT_PRODUCTS_DIR}/HRGCD/HRGCD.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/HRLoading/HRLoading.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Masonry/Masonry.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
+  install_framework "${BUILT_PRODUCTS_DIR}/HRGCD/HRGCD.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/HRLoading/HRLoading.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Masonry/Masonry.framework"
 fi

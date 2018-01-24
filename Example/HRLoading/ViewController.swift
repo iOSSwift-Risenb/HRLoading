@@ -13,18 +13,17 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+    
+//        startHRMaskLoading()
+        
+//        HRLoading.startHRMaskLoading()
+        
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
-//        self.startHRMaskLoading()
-//        self.startHRLoading()
-        
-//        HRLoading.startHRLoading()
-        HRLoading.startHRMaskLoading()
-    
     }
+
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

@@ -1,0 +1,6 @@
+framework module HRGCD {
+  umbrella header "HRGCD-umbrella.h"
+
+  export *
+  module * { export * }
+}

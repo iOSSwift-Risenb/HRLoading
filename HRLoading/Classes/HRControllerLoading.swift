@@ -5,8 +5,8 @@
 //  Created by Obgniyum on 2018/1/23.
 //
 
-import Foundation
 import Masonry
+import HRGCD
 
 public extension UIViewController {
     
@@ -17,10 +17,26 @@ public extension UIViewController {
     ///   - color: activity color
     ///   - maskColor: if maskColor is nil means no mask
     public func startLoading(size: HRLoadingSize, color: UIColor, maskColor: UIColor?) {
+        
+        HRGCD.main {
+            self._start(size: size, color: color, maskColor: maskColor)
+        }
+    }
+    
+    public func stopLoading() {
+        HRGCD.main {
+            self._stop()
+        }
+    }
+    
+    
+    
+    private func _start(size: HRLoadingSize, color: UIColor, maskColor: UIColor?) {
+        
         // check exist status
         var exist:Bool = false
-        for view in self.view.subviews {
-            if view is HRLoadingMaskView {
+        for v in view.subviews {
+            if v is HRLoadingMaskView {
                 exist = true
             }
         }
@@ -47,17 +63,17 @@ public extension UIViewController {
                 make?.centerX.equalTo()(activity.superview)
                 make?.centerY.equalTo()(activity.superview)
             })
-            self.view!.addSubview(maskView)
+            view!.addSubview(maskView)
             maskView.mas_makeConstraints({ (make) in
                 make?.edges.equalTo()(maskView.superview)
             })
         }
     }
-    
-    public func stopLoading() {
-        for view in self.view.subviews.reversed() {
-            if view is HRLoadingMaskView {
-                view.removeFromSuperview()
+
+    private func _stop() {
+        for v in view.subviews.reversed() {
+            if v is HRLoadingMaskView {
+                v.removeFromSuperview()
             }
         }
     }

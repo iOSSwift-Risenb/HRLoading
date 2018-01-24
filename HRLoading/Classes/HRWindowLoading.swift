@@ -5,15 +5,16 @@
 //  Created by Obgniyum on 2018/1/22.
 //
 
-import UIKit
 import Masonry
+import HRGCD
 
-public enum HRLoadingSize {
-    case Large
+
+public enum HRLoadingSize:Int {
+    case Large = 0
     case Default
 }
 
-open class HRLoading {
+open class HRLoading:NSObject {
 
     /// HRLoading In Window
     ///
@@ -22,6 +23,18 @@ open class HRLoading {
     ///   - color: activity color
     ///   - maskColor: if maskColor is nil means no mask
     open class func startLoading(size: HRLoadingSize, color: UIColor, maskColor: UIColor?) {
+        HRGCD.main {
+            self._start(size: size, color: color, maskColor: maskColor)
+        }
+    }
+    
+    open class func stopLoading() {
+        HRGCD.main {
+            self._stop()
+        }
+    }
+    
+    private class func _start(size: HRLoadingSize, color: UIColor, maskColor: UIColor?) {
         // check exist status
         var exist:Bool = false
         let w = UIApplication.shared.keyWindow
@@ -61,7 +74,7 @@ open class HRLoading {
         }
     }
     
-    open class func stopLoading() {
+    private class func _stop() {
         let window = UIApplication.shared.keyWindow
         for view in window!.subviews {
             if view is HRLoadingMaskView {
@@ -69,6 +82,7 @@ open class HRLoading {
             }
         }
     }
+    
 }
 
 /// identifier view, just in mode
